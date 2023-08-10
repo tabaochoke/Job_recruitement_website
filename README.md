@@ -1,2 +1,2 @@
 # a_website
-a self taught website 
+a self taught website to learn flask
