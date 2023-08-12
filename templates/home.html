@@ -7,17 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <style>
     #banner {
-      height : 360px ;
-      
+      height: 360px;
+    width: 90%;
+    object-fit:cover;
+    margin-bottom: 16px;
     }
   </style>
   </head>
   <body>
-    <div class = "container" >
+    <div class="container">
+    {% include 'navbar.html' %}
+    <div class = "img-fluid" >
+      <img class="rounded mx-auto d-block "  id = "banner" src = "static/levon-vardanyan-_EpaiWp5yC8-unsplash.jpg" height = 320>
+    </div>
+      
       <h1 class="text-center mt-3 mb-3"> {{company}} Carrers</h1>
-      <img class="rounded mx-auto d-block"  id = "banner" src = "https://awebsite-1--tabaochoke.repl.co/static/home_image.jpg" height = 320> 
-      <h2 class="text-center">About Jovian</h2>
-      <p  class="lead" class = "bodytext">TechGenius Innovations is a cutting-edge technology company dedicated to pushing the boundaries of innovation and excellence. With a passion for creating solutions that make a positive impact, we specialize in AI, Machine Learning, and Data Science. Our team of brilliant minds, comprised of engineers, data scientists, and researchers, works together to solve complex challenges and deliver remarkable outcomes for our clients.</p>
+       
+    <div class= "row" style="margin-bottom:32px">
+      <div class = "col-md-6">
+      <p  class="lead" >TechGenius Innovations is a cutting-edge technology company dedicated to pushing the boundaries of innovation and excellence. With a passion for creating solutions that make a positive impact, we specialize in AI, Machine Learning, and Data Science. Our team of brilliant minds, comprised of engineers, data scientists, and researchers, works together to solve complex challenges and deliver remarkable outcomes for our clients.</p>
+      </div>
+      <div class = "d-none d-md-block col-md-6">
+        <img class="" src = "static/moujib-aghrout-s9ESRUFnKDg-unsplash.jpg" height = 320>
+      </div>
+    </div>
+      
       <h2 class="text-center"> Open Position </h2>
       
       <div>
@@ -28,11 +42,12 @@
       </div>
             
       <div class="text-center"> 
-      <button  class="btn btn-primary btn-lg mb-3"> Contact Us </button>
-        <p mt-5> Copyright 2023, Jovian</p>
+      <a href = "mailto:jovian@ai?subject=Question%20about%20jovian%20Job%20opening&body=Your%20questions%20%3A"  class="btn btn-primary btn-lg mb-3"> Contact Us </a>
+        
       </div>
+    
+      
+      {% include 'footer.html' %}
     </div>
-      
-      
   </body>
 </html>
