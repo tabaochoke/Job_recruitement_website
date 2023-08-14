@@ -35,10 +35,11 @@
       <h2 class="text-center"> Open Position </h2>
       
       <div>
-        {% for job in jobs %}
-        {% include 'jobitems.html' %}
         
-        {% endfor %}
+        {% for row in cursor %}
+        {% include 'jobitems.html' %}
+        {% endfor %} 
+        
       </div>
             
       <div class="text-center"> 
