@@ -1,2 +1,3 @@
 FLASK
 Gunicorn
+mysql-connector-python
