@@ -2,15 +2,14 @@
   
   <div class = "col-10">
   <h4 style= "color:rgb(120,120,120) ; margin-bottom:4px;"> 
-    
-    {{row[1]}}
+    {{job['title']}}
   </h4>
   <div>
-    <b>Location:</b> {{row[2]}}
+    <b>Location:</b> {{job['location']}}
   </div>
-  {% if row[3] != None  %}
+  {% if 'salary' is  in job %}
   <div>
-    <b>Salary:</b> {{row[3]}}
+    <b>Salary:</b> {{job['salary']}}
   </div>
   {% endif %}
   </div>

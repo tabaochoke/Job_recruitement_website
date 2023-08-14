@@ -28,11 +28,20 @@ app = Flask(__name__)
 #     'salary' : '$120000'
 #   }
 # ]
+JOBS = []
+for row in cursor:
+  job = {}
+  job['id'] = row[0]
+  job['title'] = row[1]
+  job['location'] = row[2]
+  job['salary'] = row[3]
+  JOBS.append(job)
+print(JOBS)
 
 
 @app.route('/')
 def hello_world():
-  return render_template('home.html', cursor=cursor, company="Jovian")
+  return render_template('home.html', JOBS=JOBS, company="Jovian")
 
 
 @app.route('/api/jobs')
