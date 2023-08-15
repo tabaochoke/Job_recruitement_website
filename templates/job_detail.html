@@ -2,14 +2,22 @@
 <html lang="en">
   <head>
      {%include 'bootstrap.html' %}
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Job Detail</title>
     
   <style>
-    
+    .position-relative {
+      position: relative;
+    }
+    #my-form {
+      margin: auto;
+      width: 100%;
+      text-align: center;
+    }
   </style>
   </head>
   <body>
-    <div class="container">
+  <div class="container">
     {% include 'navbar.html' %}
       
       <h4 style= " margin-bottom:4px;"> 
@@ -17,8 +25,7 @@
       </h4>
       <div>
          {{job['location']}}
-      
-      
+      </div>
       <div>
       <h5>Requirement: </h5> 
         <ul>
@@ -55,11 +62,39 @@
       <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
         <div class="d-grid gap-2">
           <a href = "/" class="btn btn-outline-secondary" type="button" >Back</a>
-          <button class="btn btn-primary" type="button">Apply</button>
+          <button class="btn btn-primary" type="button" id = "apply_button" >Apply</button>
         </div>
       </div>
-      
+        
+      <div id="my-form" class="modal">
+          <div class="modal-content">
+          {%include 'apply_form.html' %}
+          </div>
+            <button id="my-close-button" class="close">Close</button>
+          </div>
+          <script>
+            var myButton = document.getElementById("apply_button");
+            var myForm = document.getElementById("my-form");
+            var myCloseButton = document.getElementById("my-close-button");
+        
+            myForm.style.display = "none";
+        
+            myButton.onclick = function() {
+              myForm.style.display = "block";
+            }
+        
+            myCloseButton.onclick = function() {
+              myForm.style.display = "none";
+            }
+        
+            window.onclick = function(event) {
+              if (event.target == myForm) {
+                myForm.style.display = "none";
+              }
+            }
+          </script>
       {% include 'footer.html' %}
-    </div>
+      </div>
+  
   </body>
 </html>
