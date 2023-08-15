@@ -31,13 +31,15 @@ app = Flask(__name__)
 JOBS = []
 for row in cursor:
   job = {}
-  job['id'] = row[0]
+  job['id'] = int (row[0]) - 1
   job['title'] = row[1]
   job['location'] = row[2]
   job['salary'] = row[3]
+  job['repon'] = row[5]
+  job['require'] = row [6]
+  job['create'] = row[7]
+  job['update'] = row[8]
   JOBS.append(job)
-print(JOBS)
-
 
 @app.route('/')
 def hello_world():
@@ -46,8 +48,12 @@ def hello_world():
 
 @app.route('/api/jobs')
 def return_jobs():
-  return jsonify(cursor)
+  return jsonify(JOBS)
 
+
+@app.route ('/jobs/<id>')
+def return_job (id) :
+  return render_template('job_detail.html', job = JOBS[int (id) ] )
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     {%include 'bootstrap.html' %}
+    <title>Job Detail</title>
+    
+  <style>
+    
+  </style>
+  </head>
+  <body>
+    <div class="container">
+    {% include 'navbar.html' %}
+      
+      <h4 style= " margin-bottom:4px;"> 
+        {{job['title']}}
+      </h4>
+      <div>
+         {{job['location']}}
+      
+      
+      <div>
+      <h5>Requirement: </h5> 
+        <ul>
+          {% set lists = job['require'].split ('.') %}
+           {% for list in lists %}
+          {% if list != '' %}
+            <li class = 'lead'>{{list}}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+      
+      <div>
+      <h5>Reponsibilitites: </h5> 
+      <ul>
+        {% set lists = job['repon'].split ('.') %}
+        {% for list in lists %}
+          {% if list != '' %}
+            <li class = 'lead'>{{list}}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      </div>
+
+
+      {% if 'salary' is  in job %}
+      <div>
+        <b>Salary:</b> {{job['salary']}}
+      </div>
+      {% endif %}
+        
+      <div class="b-example-divider"></div>
+
+      <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+        <div class="d-grid gap-2">
+          <a href = "/" class="btn btn-outline-secondary" type="button" >Back</a>
+          <button class="btn btn-primary" type="button">Apply</button>
+        </div>
+      </div>
+      
+      {% include 'footer.html' %}
+    </div>
+  </body>
+</html>

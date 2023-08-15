@@ -5,13 +5,16 @@ import os
 host = os.environ['host']
 database = os.environ['database']
 user = os.environ['user']
+pass_w = os.environ['pass']
+
+
 print(host)
 try:
   connection = mysql.connector.connect(
     host=host,
     database=database,
     user=user,
-    password='pscale_pw_uWGgz0ePGJAs8gG41PyxMd4effsi5Ndogu3K7NkFV2r')
+    password=pass_w)
   if connection.is_connected():
 
     cursor = connection.cursor()
