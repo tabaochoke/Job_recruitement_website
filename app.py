@@ -54,8 +54,13 @@ def return_jobs():
 
 @app.route('/jobs/<id>')
 def return_job(id):
-  return render_template('job_detail.html', job=JOBS[int(id)])
-
+  try:
+    job_id = int(id)
+    job = JOBS[job_id]
+    return render_template('job_detail.html', job=job)
+  except ValueError:
+    return 'Invalid job ID'
+  
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

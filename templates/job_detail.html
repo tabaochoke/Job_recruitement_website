@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
      {%include 'bootstrap.html' %}
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Job Detail</title>
@@ -69,32 +70,9 @@
       <div id="my-form" class="modal">
           <div class="modal-content">
           {%include 'apply_form.html' %}
-          </div>
-            <button id="my-close-button" class="close">Close</button>
-          </div>
-          <script>
-            var myButton = document.getElementById("apply_button");
-            var myForm = document.getElementById("my-form");
-            var myCloseButton = document.getElementById("my-close-button");
-        
-            myForm.style.display = "none";
-        
-            myButton.onclick = function() {
-              myForm.style.display = "block";
-            }
-        
-            myCloseButton.onclick = function() {
-              myForm.style.display = "none";
-            }
-        
-            window.onclick = function(event) {
-              if (event.target == myForm) {
-                myForm.style.display = "none";
-              }
-            }
-          </script>
-      {% include 'footer.html' %}
+            
+          {% include 'footer.html' %}
       </div>
-  
+    
   </body>
 </html>
