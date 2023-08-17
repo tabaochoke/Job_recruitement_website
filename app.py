@@ -2,34 +2,6 @@ from flask import Flask, render_template, jsonify, request
 from database import  JOBS , insert_job
 
 app = Flask(__name__)
-
-# JOBS = [
-#   {
-#     'id' : 1,
-#     'title' : 'Data Analyst',
-#     'location': 'Bengaluru , India',
-#     'salary' : 'Rs. 15,00,000'
-#   },
-#   {
-#     'id' : 2,
-#     'title' : 'Data Scientist',
-#     'location': 'Delhi , India',
-#     'salary' : 'Rs. 15,00,000'
-#   },
-#   {
-#     'id' : 3,
-#     'title' : 'Frontend Engineer',
-#     'location': 'Remote',
-#   },
-#   {
-#     'id' : 4,
-#     'title' : 'Backend Engineer',
-#     'location': 'San Francisco',
-#     'salary' : '$120000'
-#   }
-# ]
-
-
 @app.route('/' , methods=['GET', 'POST'])
 def hello_world():
   
@@ -51,9 +23,8 @@ def return_job(id ):
   except ValueError:
     return 'Invalid job ID'
 
-@app.route('/process', methods=['POST'])
-def process():
-  
+@app.route('/jobs/<id>/process', methods=['POST'])
+def process(id):
   first_name = request.form.get('First Name:')
   # process the data using Python code
   last_name = request.form.get('Last Name:')
@@ -66,7 +37,7 @@ def process():
   zip = request.form.get('Zip:')
   print  (first_name , last_name , user_name , email , address , cv_url , country , state , zip)
   insert_job (first_name, last_name, user_name, email, address, cv_url, country, state, zip)
-  return render_template('home.html', JOBS=JOBS, company="Jovian")
+  return render_template('job_detail.html', job=JOBS[int(id)])
   
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

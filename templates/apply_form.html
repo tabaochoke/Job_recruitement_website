@@ -112,7 +112,7 @@
         const state = form.querySelector('#state').value;
         const zip = form.querySelector('#zip').value;
       $.ajax({
-          url: '/process',
+          url: '/jobs/{{job['id']}}/process',
           type: 'POST',
           data: {
                  'First Name:': firstName ,
