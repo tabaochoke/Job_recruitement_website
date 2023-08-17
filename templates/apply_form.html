@@ -1,4 +1,4 @@
-  <div  id = "my-form">
+  <div  id = "my-form" style="display: none;">
     <h4 class="mb-3">Personal Information</h4>
     <form class="needs-validation"  novalidate>
       <div class="row g-3">
@@ -10,7 +10,7 @@
             Valid first name is required.
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6"> 
           <label for="lastName" class="form-label">Last name</label>
           <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
           <div class="invalid-feedback">
@@ -89,16 +89,18 @@
           <button onclick="sendData()"  class="w-100 btn btn-primary btn-lg">Submit</button>
     </form>
   </div>
-</div>
+<!-- </div>
   <button id="my-close-button" class="close">Close</button>
-</div>
+</div> -->
 
 <script>
             
-    var myButton = document.getElementById("apply_button");
-    var myCloseButton = document.getElementById("my-close-button");  
-    const form = document.querySelector('#my-form form');
-
+    const applyButton = document.getElementById("apply_button");
+    // var myCloseButton = document.getElementById("my-close-button");  
+    const form = document.querySelector("#my-form");
+    applyButton.addEventListener('click', () => {
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+});
     
     function sendData() {
       // var value = document.getElementById('input').value;
