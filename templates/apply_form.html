@@ -86,7 +86,7 @@
     </div>
       <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" name = "submit">Submit</button>
+          <button onclick="sendData()"  class="w-100 btn btn-primary btn-lg">Submit</button>
     </form>
   </div>
 </div>
@@ -96,51 +96,41 @@
 <script>
             
     var myButton = document.getElementById("apply_button");
-    var myForm = document.getElementById("my-form");
-    var myCloseButton = document.getElementById("my-close-button");
+    var myCloseButton = document.getElementById("my-close-button");  
+    const form = document.querySelector('#my-form form');
 
-    myForm.style.display = "none";
-
-    myButton.onclick = function() {
-      myForm.style.display = "block";
+    
+    function sendData() {
+      // var value = document.getElementById('input').value;
+        const firstName = form.querySelector('#firstName').value;
+        const lastName = form.querySelector('#lastName').value;
+        const username = form.querySelector('#username').value;
+        const email = form.querySelector('#email').value;
+        const address = form.querySelector('#address').value;
+        const cvURL = form.querySelector('#address').value;
+        const country = form.querySelector('#country').value;
+        const state = form.querySelector('#state').value;
+        const zip = form.querySelector('#zip').value;
+      $.ajax({
+          url: '/process',
+          type: 'POST',
+          data: {
+                 'First Name:': firstName ,
+                 'Last Name:': lastName,
+                 'Username:': username,
+                 'Email:': email ,
+                 'Address:': address,
+                 'CV URL:': cvURL ,
+                 'Country:': country ,
+                 'State:': state ,
+                 'Zip:': zip
+                },
+          // success: function(response) {
+          //     document.getElementById('output').innerHTML = response;
+          // },
+          error: function(error) {
+              console.log(error);
+          }
+      });
     }
-
-    myCloseButton.onclick = function() {
-      myForm.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == myForm) {
-        myForm.style.display = "none";
-      }
-    }
-        
-  document.addEventListener('DOMContentLoaded', function () {
-            const form = document.querySelector('#my-form form');
-
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent form submission
-
-                const firstName = form.querySelector('#firstName').value;
-                const lastName = form.querySelector('#lastName').value;
-                const username = form.querySelector('#username').value;
-                const email = form.querySelector('#email').value;
-                const address = form.querySelector('#address').value;
-                const cvURL = form.querySelector('#address').value;
-                const country = form.querySelector('#country').value;
-                const state = form.querySelector('#state').value;
-                const zip = form.querySelector('#zip').value;
-
-                // Now you can use the retrieved values as needed
-                console.log('First Name:', firstName);
-                console.log('Last Name:', lastName);
-                console.log('Username:', username);
-                console.log('Email:', email);
-                console.log('Address:', address);
-                console.log('CV URL:', cvURL);
-                console.log('Country:', country);
-                console.log('State:', state);
-                console.log('Zip:', zip);
-            });
-        });
-    </script>
+</script>
